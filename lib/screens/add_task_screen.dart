@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
 
 class AddTaskScreen extends StatelessWidget {
+  final Function addNewTaskTitle;
+  AddTaskScreen(this.addNewTaskTitle);
+
   @override
   Widget build(BuildContext context) {
+    String? newTask;
     return SingleChildScrollView(
       padding:
           EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
@@ -22,14 +26,22 @@ class AddTaskScreen extends StatelessWidget {
               TextField(
                 autofocus: true,
                 textAlign: TextAlign.center,
+                onChanged: (newTaskTitle) {
+                  newTask = newTaskTitle;
+                },
               ),
               SizedBox(
                 width: double.infinity,
                 child: TextButton(
-                  onPressed: () {},
-                  child: Text('Add'),
+                  onPressed: () {
+                    addNewTaskTitle(newTask);
+                    Navigator.pop(context);
+                  },
+                  child: Text(
+                    'Add',
+                    style: TextStyle(color: Colors.white),
+                  ),
                   style: TextButton.styleFrom(
-                      primary: Colors.white,
                       backgroundColor: Colors.lightBlueAccent),
                 ),
               )
