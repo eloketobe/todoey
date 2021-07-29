@@ -5,13 +5,7 @@ import 'add_task_screen.dart';
 import 'package:todoey_flutter/models/task_data.dart';
 import 'package:provider/provider.dart';
 
-class TasksScreen extends StatefulWidget {
-  @override
-  _TasksScreenState createState() => _TasksScreenState();
-}
-
-class _TasksScreenState extends State<TasksScreen> {
-  @override
+class TasksScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.lightBlueAccent,
@@ -20,11 +14,7 @@ class _TasksScreenState extends State<TasksScreen> {
           showModalBottomSheet(
             isScrollControlled: true,
             context: context,
-            builder: (BuildContext context) => AddTaskScreen((newTask) {
-              // setState(() {
-              //   tasks.add(Task(name: newTask));
-              // });
-            }),
+            builder: (BuildContext context) => AddTaskScreen(),
           );
         },
         backgroundColor: Colors.lightBlueAccent,
